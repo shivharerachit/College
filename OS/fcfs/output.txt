@@ -1,0 +1,10 @@
+
+Waiting Time for 	Process ID :1	Sequence No. :0	is :0
+
+Waiting Time for 	Process ID :2	Sequence No. :1	is :7
+
+Waiting Time for 	Process ID :3	Sequence No. :2	is :10
+
+Waiting Time for 	Process ID :4	Sequence No. :3	is :11
+
+Waiting Time for 	Process ID :5	Sequence No. :4	is :15
