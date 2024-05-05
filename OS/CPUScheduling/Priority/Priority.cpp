@@ -108,12 +108,17 @@ int main(){
     for(int i=0;i<n;i++){
         tbt+=arr[i].bt;
         twt+=arr[i].wt;
-        cout<<path[i]<<"\t";
+        cout<<path[i]+1<<"->\t";
     }
-    int ideal=time-tbt;
-    cout<<"P No.\tP ID\tAT\tBT\tCT\tWT\tTAT\n";
+    cout<<"End..\n\nGantt Chart: \n";
     for(int i=0;i<n;i++){
-        cout<<arr[i].pno<<"\t\t"<<arr[i].id<<"\t\t"<<arr[i].at<<"\t"<<arr[i].bt<<"\t"<<arr[i].ct<<"\t"<<arr[i].wt<<"\t"<<arr[i].tat<<"\n";
+        cout<<"P"<<path[i]+1<<" ";
+    }
+    cout<<"\n\n";
+    int ideal=time-tbt;
+    cout<<"P No.\tP ID\tAT\tBT\tPR\tCT\tWT\tTAT\n";
+    for(int i=0;i<n;i++){
+        cout<<arr[i].pno<<"\t\t"<<arr[i].id<<"\t\t"<<arr[i].at<<"\t"<<arr[i].bt<<"\t"<<arr[i].pr<<"\t"<<arr[i].ct<<"\t"<<arr[i].wt<<"\t"<<arr[i].tat<<"\n";
     }
     cout<<"\nTotal Time = "<<time<<"\nTotal Burst Time = "<<tbt<<"\nTotal Ideal Time = "<<ideal<<"\nAverage Waiting Time =  "<<(float)twt/n;
     return 0;
