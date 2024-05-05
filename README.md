@@ -180,7 +180,7 @@ This repository contains all the code assignments provided by my college.
 ### C_Programs/Sheet-2
 
 - [1_triangle_validity_check.c](./C_Programs/Sheet-2/1_triangle_validity_check.c)
-- [2_multiple_of 7.c](./C_Programs/Sheet-2/2_multiple_of 7.c)
+- [2_multiple_of_7.c](./C_Programs/Sheet-2/2_multiple_of_7.c)
 - [3_voting_eligibility.c](./C_Programs/Sheet-2/3_voting_eligibility.c)
 - [4_alpha_check.c](./C_Programs/Sheet-2/4_alpha_check.c)
 - [5_alpha_check_2.c](./C_Programs/Sheet-2/5_alpha_check_2.c)
