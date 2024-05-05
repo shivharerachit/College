@@ -1,38 +1,7 @@
 #include<bits/stdc++.h>
-using namespace std;
+// using namespace std;
 
 #define sh 100
-
-int partition(int* arr, int start, int end, int* p, int* b) {
-    int pivot = arr[end];
-    int i = (start - 1);
-
-    for (int j = start; j <= end - 1; j++) {
-        if (arr[j] < pivot) {
-            i++;
-            swap(arr[i], arr[j]);
-            swap(p[i], p[j]);
-            swap(b[i], b[j]);
-        }
-    }
-    swap(arr[i + 1], arr[end]);
-    swap(p[i + 1], p[end]);
-    swap(b[i + 1], b[end]);
-    return (i + 1);
-}
-
-
-void quickSort(int* arr, int start, int end, int* pt, int* b){
-    // base case
-    if (start >= end)
-        return;
-    // partitioning the array
-    int p = partition(arr, start, end, pt, b);
-    // Sorting the left part
-    quickSort(arr, start, p - 1, pt, b);
-    // Sorting the right part
-    quickSort(arr, p + 1, end, pt, b);
-}
 
 struct process {
     // Process No.
@@ -50,24 +19,31 @@ struct process {
     // Waiting time
     int wt;
     //boolean value to keep record of
-    bool check;//to check wheather the process is added in the tasks
-    bool mark;//to check wheather the process is executed or not 
+    bool task_check;//to task_check wheather the process is added in the tasks
+    bool mark;//to task_check wheather the process is executed or not 
 } arr[sh + 1];
 
-
+using namespace std;
 int main(){
-    int n, time=0, tasks[100];
+    int n, time=0;
+    int length_tasks=0, que_length=0;
     // cout<<"AIM : Write a program to implement SJF CPU scheduling algorithm."<<endl;
     // cout<<"Enter the no. of jobs:";
     cin>>n;
-    int path[n];
+    int path[n], tasks[n];
 
-    for(int i = 0 ; i<n ; i++){
-        tasks[i]=999;
-        path[i]=999;
-        arr[i].check=true;
+    for(int i=0;i<=sh;i++){
+        arr[i].task_check=true;
         arr[i].mark=true;
         arr[i].pno=i;
+        arr[i].id=999;
+        arr[i].at=999;
+        arr[i].bt=999;
+    }
+
+    for(int i = 0 ; i<n ; i++){
+        path[i]=999;
+        tasks[i]=999;
         // cout<<"Enter the process ID:";
         cin>>arr[i].id;
         // cout<<"Enter the arrival time:";
@@ -75,47 +51,61 @@ int main(){
         // cout<<"Enter the burst time:";
         cin>>arr[i].bt;
     }
-
-    int length_tasks=0;
-
+    
     for(int i = 0 ; i<n ; i++){
-        if(arr[i].at<=time && arr[i].check){
-            tasks[arr[i].pno]=arr[i].bt;
-            length_tasks++;
-            arr[i].check=false;
-        }
-        int min=999, index=0;
-        //Error Part
-        for(int j=0 ; j<length_tasks ; j++){
-            for(int k=0 ; k<length_tasks ; k++){
-                if(tasks[j]<min){
-                    min=tasks[j];
-                    index=j;
+        if(length_tasks!=n){
+            label:
+            for(int j=0 ; j<n ; j++){
+                // cout<<"Iteration :"<<j<<"\nAT:"<<arr[j].at<<"\nTime :"<<time<<"\nTask Check :"<<arr[j].task_check<<"\n\n";
+                if(arr[j].at<=time && arr[j].task_check){
+                    // cout<<"\nIteration :"<<j<<"\nAT:"<<arr[j].at<<"\nTime :"<<time<<"\nTask Check :"<<arr[j].task_check<<"\n";
+                    tasks[j]=arr[j].bt;
+                    // cout<<"BT: "<<tasks[j]<<"\n";
+                    length_tasks++;
+                    // cout<<"Task Length:"<<length_tasks<<"\n\n";
+                    arr[j].task_check=false;
                 }
             }
-            if(arr[index].mark) break;
+            if(length_tasks<=que_length){
+                // cout<<"\n\nLessThan\n\n";
+                time++;
+                goto label;
+            }
         }
-        cout<<time<<"\n";
-        if(arr[index].mark){
+        // cout<<"\n\n"<<tasks[3]<<"\n\n";
+        // cout<<"\n"<<length_tasks<<"\n";
+        int min=99, index=0;
+        // cout<<"\n";
+        for(int k=0 ; k<n ; k++){
+            // cout<<"Iteration K :"<<k<<"\nTask K:"<<tasks[k]<<"\nMinimum :"<<min<<"\nMark :"<<arr[k].mark<<"\n";
+            if(tasks[k]<min && arr[k].mark==true){
+                // cout<<"Iteration :"<<i<<"\nTask K:"<<tasks[k]<<"\nMinimum :"<<min<<"\nMark :"<<arr[k].mark<<"\n";
+                min=tasks[k];
+                index=k;
+            }
+            // cout<<min<<"\t";
+        }
+        // // cout<<"\n";
+        if(arr[index].mark && min != 999){
             arr[index].mark = !arr[index].mark;
             time += min;
             arr[index].ct=time;
-            cout<<time<<"\n";
-            // arr[index].tat=time - arr[index].at;
-            // arr[index].wt=arr[index].tat - arr[index].bt;
+            arr[index].tat=time - arr[index].at;
+            arr[index].wt=arr[index].tat - arr[index].bt;
+            que_length++;
         }
-        //ideal time calculation
     }
-    // int tbt=0;
-    // for(int i=0;i<n;i++){
-    //     tbt+=arr[i].bt;
-    // }
-    // int ideal=time-tbt;
-    cout<<"\nP No.\tP ID\tAT\tBT\tCT\n";
-    // \tWT\tTAT\n";
+    int tbt=0, twt=0;
     for(int i=0;i<n;i++){
-        cout<<arr[i].pno<<"\t\t"<<arr[i].id<<"\t\t"<<arr[i].at<<"\t"<<arr[i].bt<<"\t"<<arr[i].ct<<"\t"<<"\n";
-        //<<arr[i].wt<<"\t"<<arr[i].tat<<"\n";
+        tbt+=arr[i].bt;
+        twt+=arr[i].wt;
     }
+    int ideal=time-tbt;
+
+    cout<<"P No.\tP ID\tAT\tBT\tCT\tWT\tTAT\n";
+    for(int i=0;i<n;i++){
+        cout<<arr[i].pno<<"\t\t"<<arr[i].id<<"\t\t"<<arr[i].at<<"\t"<<arr[i].bt<<"\t"<<arr[i].ct<<"\t"<<arr[i].wt<<"\t"<<arr[i].tat<<"\n";
+    }
+    cout<<"\nTotal Time = "<<time<<"\nTotal Burst Time = "<<tbt<<"\nTotal Ideal Time = "<<ideal<<"\nAverage Waiting Time =  "<<(float)twt/n;
     return 0;
 }
