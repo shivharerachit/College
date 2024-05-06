@@ -1,4 +1,7 @@
 class Animal{
+    Animal(){
+        System.out.println("Constructor Called.");
+    }
     public void makeSound(){
         System.out.println("Some Generic Sound");
     }
