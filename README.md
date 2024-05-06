@@ -250,4 +250,3 @@ This repository contains all the code assignments provided by my college.
 - [multilevel_inheritance.py](./Python/multilevel_inheritance.py)
 - [multiple_inheritance.py](./Python/multiple_inheritance.py)
 - [single_inheritance.py](./Python/single_inheritance.py)
-- [variable.py](./Python/variable.py)

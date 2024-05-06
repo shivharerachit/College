@@ -1,0 +1,18 @@
+Enter Number of Process: 
+Path: 
+1->	2->	4->	3->	5->	End..
+
+Gantt Chart: 
+P1 P2 P4 P3 P5 
+
+P No.	P ID	AT	BT	PR	CT	WT	TAT
+0		1		0	11	2	11	0	11
+1		2		5	28	0	39	6	34
+2		3		12	2	3	51	37	39
+3		4		2	10	1	49	37	47
+4		5		9	16	4	67	42	58
+
+Total Time = 67
+Total Burst Time = 67
+Total Ideal Time = 0
+Average Waiting Time =  24.4

@@ -1,0 +1,32 @@
+Enter total number of processes: 
+Enter Process 1 Arrival Time and Burst Time: 
+
+Enter Process 2 Arrival Time and Burst Time: 
+
+Enter Process 3 Arrival Time and Burst Time: 
+
+Enter Process 4 Arrival Time and Burst Time: 
+
+Enter Process 5 Arrival Time and Burst Time: 
+
+Enter Process 6 Arrival Time and Burst Time: 
+
+Enter Process 7 Arrival Time and Burst Time: 
+
+Enter Process 8 Arrival Time and Burst Time: 
+
+Enter Process 9 Arrival Time and Burst Time: 
+
+Process No.	AT	CPU Burst Time	CT	TAT	WT	
+1			0	4				4	4	0	
+2			0	0				0	0	0	
+3			0	0				0	0	0	
+4			0	8				16	16	8	
+5			0	4				8	8	4	
+6			0	8				24	24	16	
+7			0	0				0	0	0	
+8			0	0				0	0	0	
+9			11	0				16	5	5	
+
+Average Waiting Time: 3.666667
+Average Turnaround Time: 6.333333

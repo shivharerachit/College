@@ -97,7 +97,7 @@ class Academic extends Personal{
     }
 }
 
-class Sports extends Academic{
+class Sports extends Personal{
     Scanner scanner = new Scanner(System.in);
     String S_name;
     int S_part;
