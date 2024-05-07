@@ -69,13 +69,13 @@ int main(){
     //Input
     for(int i = 0 ; i<n ; i++){
         arr[i].pno=i;
-        // cout<<"Enter the Process Number:";
+        cout<<"Enter the Process ID:";
         cin>>arr[i].id;
-        // cout<<"Enter the Arrival Time:";
+        cout<<"Enter the Arrival Time:";
         cin>>arr[i].at;
-        // cout<<"Enter the Burst Time:";
+        cout<<"Enter the Burst Time:";
         cin>>arr[i].bt;
-        // cout<<"Enter the Priority (highest priority first):";
+        cout<<"Enter the Priority (highest priority first):";
         cin>>arr[i].pr;
     }
 
@@ -118,8 +118,8 @@ int main(){
     int ideal=time-tbt;
     cout<<"P No.\tP ID\tAT\tBT\tPR\tCT\tWT\tTAT\n";
     for(int i=0;i<n;i++){
-        cout<<arr[i].pno<<"\t\t"<<arr[i].id<<"\t\t"<<arr[i].at<<"\t"<<arr[i].bt<<"\t"<<arr[i].pr<<"\t"<<arr[i].ct<<"\t"<<arr[i].wt<<"\t"<<arr[i].tat<<"\n";
+        cout<<arr[i].pno<<"\t"<<arr[i].id<<"\t"<<arr[i].at<<"\t"<<arr[i].bt<<"\t"<<arr[i].pr<<"\t"<<arr[i].ct<<"\t"<<arr[i].wt<<"\t"<<arr[i].tat<<"\n";
     }
-    cout<<"\nTotal Time = "<<time<<"\nTotal Burst Time = "<<tbt<<"\nTotal Ideal Time = "<<ideal<<"\nAverage Waiting Time =  "<<(float)twt/n;
+    cout<<"\nTotal Ideal Time = "<<ideal<<"\nAverage Waiting Time =  "<<(float)twt/n<<"\nAverage Turnaround Time = "<<(float)(twt+tbt)/n<<"\n";
     return 0;
 }

@@ -4,7 +4,7 @@ using namespace std;
 int main(){
     int n;
 
-    // cout<<"Enter number of process (less than 20):";
+    cout<<"Enter number of process (less than 20):";
     cin>>n;
 
     int arr[20];
@@ -13,14 +13,14 @@ int main(){
     int x;
     
     for(int i=0;i<n;i++){
-        // cout<<"\n\t\t"<<"Sequence No. :"<<i+1<<"\t\t\n";
-        // cout<<"Enter Process ID:";
+        cout<<"\n\t\t"<<"Sequence No. :"<<i+1<<"\t\t\n";
+        cout<<"Enter Process ID:";
         cin>>p_id[i];
-        // cout<<"Enter Arrival Time:";
+        cout<<"Enter Arrival Time:";
         cin>>arr[i];
-        // cout<<"Enter Burst Time:";
+        cout<<"Enter Burst Time:";
         cin>>bur[i];
-        // cout<<"You Entered "<<i<<" process.";
+        cout<<"You Entered "<<i<<" process.\n";
     }
 
     for(int j=0;j<n;j++){
@@ -49,14 +49,21 @@ int main(){
     }
     int time=0;
     int wa_time=0;
+    int twt=0;
+    int tat=0;
+    cout<<"p_id\tSq. no.\tAT\tBT\tWT\tTAT\n";
     for(int h=0;h<n;h++){
         wa_time=time-arr[h];
         time=time+bur[h];
         if(wa_time<=0){
             wa_time=0;
         }
-        cout<<"\nWaiting Time for \tProcess ID :"<<p_id[h]<<"\tSequence No. :"<<h<<"\tis :"<<wa_time<<endl;
+        twt=twt+wa_time;
+        tat+=time-arr[h];
+        cout<<p_id[h]<<"\t"<<h<<"\t"<<arr[h]<<"\t"<<bur[h]<<"\t"<<wa_time<<"\t"<<time-arr[h]<<"\n";
     }
+    cout<<"Average Waiting Time:"<<twt/n<<"\n";
+    cout<<"Average Turn Around Time:"<<tat/n<<"\n";
 
     return 0;
 }

@@ -28,7 +28,7 @@ int main(){
     int n, time=0;
     int length_tasks=0, que_length=0;
     // cout<<"AIM : Write a program to implement SJF CPU scheduling algorithm."<<endl;
-    // cout<<"Enter the no. of jobs:";
+    cout<<"Enter the no. of jobs:";
     cin>>n;
     int path[n], tasks[n];
 
@@ -44,11 +44,11 @@ int main(){
     for(int i = 0 ; i<n ; i++){
         path[i]=999;
         tasks[i]=999;
-        // cout<<"Enter the process ID:";
+        cout<<"Enter the process ID:";
         cin>>arr[i].id;
-        // cout<<"Enter the arrival time:";
+        cout<<"Enter the arrival time:";
         cin>>arr[i].at;
-        // cout<<"Enter the burst time:";
+        cout<<"Enter the burst time:";
         cin>>arr[i].bt;
     }
     
@@ -104,8 +104,8 @@ int main(){
 
     cout<<"P No.\tP ID\tAT\tBT\tCT\tWT\tTAT\n";
     for(int i=0;i<n;i++){
-        cout<<arr[i].pno<<"\t\t"<<arr[i].id<<"\t\t"<<arr[i].at<<"\t"<<arr[i].bt<<"\t"<<arr[i].ct<<"\t"<<arr[i].wt<<"\t"<<arr[i].tat<<"\n";
+        cout<<arr[i].pno<<"\t"<<arr[i].id<<"\t"<<arr[i].at<<"\t"<<arr[i].bt<<"\t"<<arr[i].ct<<"\t"<<arr[i].wt<<"\t"<<arr[i].tat<<"\n";
     }
-    cout<<"\nTotal Time = "<<time<<"\nTotal Burst Time = "<<tbt<<"\nTotal Ideal Time = "<<ideal<<"\nAverage Waiting Time =  "<<(float)twt/n;
+    cout<<"\nTotal Ideal Time = "<<ideal<<"\nAverage Waiting Time =  "<<(float)twt/n<<"\nAverage Turnaround Time = "<<(float)(twt+tbt)/n<<"\n";
     return 0;
 }
