@@ -1,0 +1,11 @@
+In this we show that any particular conclusion follows from a set of general premises.
+In this we generally isolate potential areas where error occurrence can be found. 
+A hypothesis statement is given and we use error associated data to prove whether 
+the given hypothesis is right or wrong. If nothing else works then we create 
+alternate list of possible errors and associated causes and then we develop test 
+cases to test them out and start eliminating the causes.
+There are three types of questions everyone should ask for before correcting any 
+error :
+Is the cause of bug reproduce in other program ?
+What next might be introduced by the fix that I’m about to make ?
+What could we’ve done to prevent this bug in the first place ?
