@@ -41,14 +41,14 @@ int check_priority(int n, int time){
                 index = i;
             }
             else if(arr[i].pr == minPriority){
-                if(arr[i].bt < minBurstTime){
+                if(arr[i].at < minArrivalTime){
                     minPriority = arr[i].pr;
                     minBurstTime = arr[i].bt;
                     minArrivalTime = arr[i].at;
                     index = i;
                 }
                 else if(arr[i].bt == minBurstTime){
-                    if(arr[i].at < minArrivalTime){
+                    if(arr[i].bt < minBurstTime){
                         minPriority = arr[i].pr;
                         minBurstTime = arr[i].bt;
                         minArrivalTime = arr[i].at;
@@ -65,7 +65,7 @@ int main(){
     int n;
     cout<<"Enter Number of Process: ";
     cin>>n;
-    
+    cout<<"Name: Rachit Shivhare\nEnrollment No.:0827CS221213\n";
     //Input
     for(int i = 0 ; i<n ; i++){
         arr[i].pno=i;
@@ -103,6 +103,8 @@ int main(){
         arr[index].tat = arr[index].ct - arr[index].at;
         arr[index].wt = arr[index].tat - arr[index].bt;
     }
+
+    //Output
     int tbt=0, twt=0;
     cout<<"\nPath: \n";
     for(int i=0;i<n;i++){
