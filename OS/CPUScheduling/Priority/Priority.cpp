@@ -47,7 +47,7 @@ int check_priority(int n, int time){
                     minArrivalTime = arr[i].at;
                     index = i;
                 }
-                else if(arr[i].bt == minBurstTime){
+                else if(arr[i].at == minArrivalTime){
                     if(arr[i].bt < minBurstTime){
                         minPriority = arr[i].pr;
                         minBurstTime = arr[i].bt;

@@ -68,8 +68,8 @@ int main(){
         arr[i].bt1 = arr[i].bt;
     }
 
+    //Initialising the values
     for(int i = 0 ; i<n ; i++){
-        // arr[i].task_check=false;
         arr[i].exe=false;
         arr[i].comp=false;
         tasks[i].bt=999;
@@ -77,6 +77,7 @@ int main(){
     int time = 0;
     int length_tasks = n;
     int taskarray = 0;
+
     //Main Logic
     sort(n, true);
     while(length_tasks){
