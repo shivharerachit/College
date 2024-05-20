@@ -4,7 +4,7 @@ using namespace std;
 int main(){
     int n;
 
-    cout<<"Enter number of process (less than 20):";
+    // cout<<"Enter number of process (less than 20):";
     cin>>n;
 
     int arr[20];
@@ -13,14 +13,14 @@ int main(){
     int x;
     
     for(int i=0;i<n;i++){
-        cout<<"\n\t\t"<<"Sequence No. :"<<i+1<<"\t\t\n";
-        cout<<"Enter Process ID:";
+        // cout<<"\n\t\t"<<"Sequence No. :"<<i+1<<"\t\t\n";
+        // cout<<"Enter Process ID:";
         cin>>p_id[i];
-        cout<<"Enter Arrival Time:";
+        // cout<<"Enter Arrival Time:";
         cin>>arr[i];
-        cout<<"Enter Burst Time:";
+        // cout<<"Enter Burst Time:";
         cin>>bur[i];
-        cout<<"You Entered "<<i<<" process.\n";
+        // cout<<"You Entered "<<i<<" process.\n";
     }
 
     for(int j=0;j<n;j++){

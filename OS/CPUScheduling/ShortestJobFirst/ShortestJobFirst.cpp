@@ -27,7 +27,7 @@ int main(){
     int n, time=0;
     int length_tasks=0, que_length=0;
     // cout<<"AIM : Write a program to implement SJF CPU scheduling algorithm."<<endl;
-    cout<<"Enter the no. of jobs:";
+    // cout<<"Enter the no. of jobs:";
     cin>>n;
     int path[n], tasks[n];
 
@@ -43,37 +43,31 @@ int main(){
     for(int i = 0 ; i<n ; i++){
         path[i]=999;
         tasks[i]=999;
-        cout<<"Enter the process ID:";
+        // cout<<"Enter the process ID:";
         cin>>arr[i].id;
-        cout<<"Enter the arrival time:";
+        // cout<<"Enter the arrival time:";
         cin>>arr[i].at;
-        cout<<"Enter the burst time:";
+        // cout<<"Enter the burst time:";
         cin>>arr[i].bt;
     }
     
+    // Main Logic
     for(int i = 0 ; i<n ; i++){
         if(length_tasks!=n){
             label:
             for(int j=0 ; j<n ; j++){
-                // cout<<"Iteration :"<<j<<"\nAT:"<<arr[j].at<<"\nTime :"<<time<<"\nTask Check :"<<arr[j].task_check<<"\n\n";
                 if(arr[j].at<=time && arr[j].task_check){
-                    // cout<<"\nIteration :"<<j<<"\nAT:"<<arr[j].at<<"\nTime :"<<time<<"\nTask Check :"<<arr[j].task_check<<"\n";
                     tasks[j]=arr[j].bt;
-                    // cout<<"BT: "<<tasks[j]<<"\n";
                     length_tasks++;
-                    // cout<<"Task Length:"<<length_tasks<<"\n\n";
                     arr[j].task_check=false;
                 }
             }
             if(length_tasks<=que_length){
-                // cout<<"\n\nLessThan\n\n";
                 time++;
                 goto label;
             }
         }
-        // cout<<"\n\n"<<tasks[3]<<"\n\n";
-        // cout<<"\n"<<length_tasks<<"\n";
-        int min=99, index=0;
+        int min=999, index=0;
         // cout<<"\n";
         for(int k=0 ; k<n ; k++){
             // cout<<"Iteration K :"<<k<<"\nTask K:"<<tasks[k]<<"\nMinimum :"<<min<<"\nMark :"<<arr[k].mark<<"\n";
