@@ -1,1 +1,0 @@
-cout<<arr[i].pno<<"\t\t "<<arr[i].id<<"\t\t "<<arr[i].at<<"\t\t "<<arr[i].bt<<"\t\t "<<arr[i].pr<<"\t\t "<<arr[i].ct<<"\t\t "<<arr[i].wt<<"\t\t "<<arr[i].tat<<"\t\t "<<arr[i].wt<<"\n";
