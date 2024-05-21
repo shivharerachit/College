@@ -76,14 +76,14 @@ void input(int n){
         tasks[i].bt=999;
     }
     for(int i = 0 ; i<n ; i++){
-        // cout<<"Enter the process ID:";
+        cout<<"Enter the process ID:";
         cin>>arr[i].id;
-        // cout<<"Enter the arrival time:";
+        cout<<"Enter the arrival time:";
         cin>>arr[i].at;
-        // cout<<"Enter the burst time:";
+        cout<<"Enter the burst time:";
         cin>>arr[i].bt;
         arr[i].bt1=arr[i].bt;
-        // cout<<"Enter the Priority (highest priority first):";
+        cout<<"Enter the Priority (highest priority first):";
         cin>>arr[i].pr;
     }
     sort(n, true);
@@ -110,8 +110,6 @@ float* fcfs(int n){
     int wa_time=0;
     int twt=0;
     int tat=0;
-    cout<<"\n\t************FCFS************\n";
-    cout<<"P No.\tP ID\tAT\tBT\tCT\tWT\tTAT\n";
     for(int h=0;h<n;h++){
         wa_time=time-arr[h].at;
         time=time+arr[h].bt;
@@ -120,7 +118,6 @@ float* fcfs(int n){
         }
         twt=twt+wa_time;
         tat+=time-arr[h].at;
-        cout<<h<<"\t"<<arr[h].id<<"\t"<<arr[h].at<<"\t"<<arr[h].bt<<"\t"<<time<<"\t"<<wa_time<<"\t"<<time-arr[h].at<<"\n";
     }
     float* ret = new float[3];
     ret[0] = (float)twt/n;
@@ -172,12 +169,6 @@ float* sjf(int n){
         twt+=arr[i].wt;
     }
     int ideal=time-tbt;
-    cout<<"\n\t************SJF************\n";
-    cout<<"P No.\tP ID\tAT\tBT\tCT\tWT\tTAT\n";
-    for(int i=0;i<n;i++){
-        cout<<arr[i].pno<<"\t"<<arr[i].id<<"\t"<<arr[i].at<<"\t"<<arr[i].bt<<"\t"<<arr[i].ct<<"\t"<<arr[i].wt<<"\t"<<arr[i].tat<<"\n";
-    }
-    
     float* ret = new float[3];
     ret[0] = (float)twt/n;
     ret[1] = (float)(twt+tbt)/n;
@@ -186,7 +177,6 @@ float* sjf(int n){
 }
 
 int check_priority(int n, int time){
-    //This will check the priority of the process whose arrival time is less than time and if not found return -1 and if there are more than one process with same priority then it will check the burst time of the process and if the burst time is also same then it will check the arrival time of the process
     int minPriority = INT_MAX;
     int minBurstTime = INT_MAX;
     int minArrivalTime = INT_MAX;
@@ -243,11 +233,6 @@ float* priority(int n){
         tbt+=arr[i].bt;
         twt+=arr[i].wt;
     }
-    cout<<"\n\t************Priority************\n";
-    cout<<"P No.\tP ID\tAT\tBT\tPR\tCT\tWT\tTAT\n";
-    for(int i=0;i<n;i++){
-        cout<<arr[i].pno<<"\t"<<arr[i].id<<"\t"<<arr[i].at<<"\t"<<arr[i].bt<<"\t"<<arr[i].pr<<"\t"<<arr[i].ct<<"\t"<<arr[i].wt<<"\t"<<arr[i].tat<<"\n";
-    }
     float* ret = new float[3];
     ret[0] = (float)twt/n;
     ret[1] = (float)(twt+tbt)/n;
@@ -291,11 +276,7 @@ float* rr(int n,  int t){
     }
     sort(n);
     int twt=0, tat=0, trt=0;
-    cout<<"\n\t************Round Robin************\n";
-    //Output
-    cout<<"P No.\tP ID\tAT\tBT\tCT\tWT\tTAT\tST\tRT\n";
     for(int i=0;i<n;i++){
-        cout<<arr[i].pno<<"\t"<<arr[i].id<<"\t"<<arr[i].at<<"\t"<<arr[i].bt1<<"\t"<<arr[i].ct<<"\t"<<arr[i].wt<<"\t"<<arr[i].tat<<"\t"<<arr[i].st<<"\t"<<arr[i].rt<<"\n";
         twt+=arr[i].wt;
         tat+=arr[i].tat;
         trt+=arr[i].rt;
@@ -307,72 +288,81 @@ float* rr(int n,  int t){
     return ret;
 }
 
-void output(float* out){
-    cout<<"\tAverage Waiting Time:\t"<<out[0]<<"\n";
-    cout<<"\tAverage Turnaround Time:"<<out[1]<<"\n";
-    cout<<"\tAverage Response Time:\t"<<out[2]<<"\n";
-}
-
 int main(){
     int n, t;
-    // cout<<"Enter Number of Process: ";
+    cout<<"Name: Rachit Shivhare\nEnrollment No.:0827CS221213\n";
+    cout<<"Enter Number of Process: ";
     cin>>n;
-    // cout<<"Enter Time Quantum (for Premtive CPU Scheduling Algorithm ): ";
+    cout<<"Enter Time Quantum (for Premtive CPU Scheduling Algorithm ): ";
     cin>>t;
     input(n);
 
     float* fcfs_out = fcfs(n);
-    output(fcfs_out);
-
     float* sjf_out = sjf(n);
-    output(sjf_out);
-
     float* priority_out = priority(n);
-    output(priority_out);
-
     float* rr_out = rr(n, t);
-    output(rr_out);
+
+    cout<<"\n\n";
+    cout<<"Average Waiting Times:\n";
+    cout<<"First Come First Serve: "<<fcfs_out[0]<<"\n";
+    cout<<"Shortest Job First: "<<sjf_out[0]<<"\n";
+    cout<<"Priority Scheduling: "<<priority_out[0]<<"\n";
+    cout<<"Round Robin: "<<rr_out[0]<<"\n";
+
+    cout<<"\n\n";
+    cout<<"Turnaround Times:\n";
+    cout<<"First Come First Serve: "<<fcfs_out[1]<<"\n";
+    cout<<"Shortest Job First: "<<sjf_out[1]<<"\n";
+    cout<<"Priority Scheduling: "<<priority_out[1]<<"\n";
+    cout<<"Round Robin: "<<rr_out[1]<<"\n";
+
+    cout<<"\n\n";
+    cout<<"Response Times:\n";
+    cout<<"First Come First Serve: "<<fcfs_out[2]<<"\n";
+    cout<<"Shortest Job First: "<<sjf_out[2]<<"\n";
+    cout<<"Priority Scheduling: "<<priority_out[2]<<"\n";
+    cout<<"Round Robin: "<<rr_out[2]<<"\n";
 
     // Print Which algorithm is best according to the average waiting time
     if(fcfs_out[0] <= sjf_out[0] && fcfs_out[0] <= priority_out[0] && fcfs_out[0] <= rr_out[0]){
-        cout<<"\nFCFS is the best algorithm according to the average waiting time\n";
+        cout<<"\nMinimum Average Waiting Time: First Come First Serve, "<<fcfs_out[0]<<"\n";
     }
     else if(sjf_out[0] <= fcfs_out[0] && sjf_out[0] <= priority_out[0] && sjf_out[0] <= rr_out[0]){
-        cout<<"\nSJF is the best algorithm according to the average waiting time\n";
+        cout<<"\nMinimum Average Waiting Time: Shortest Job First, "<<sjf_out[0]<<"\n";
     }
     else if(priority_out[0] <= fcfs_out[0] && priority_out[0] <= sjf_out[0] && priority_out[0] <= rr_out[0]){
-        cout<<"\nPriority is the best algorithm according to the average waiting time\n";
+        cout<<"\nMinimum Average Waiting Time: Priority Scheduling, "<<priority_out[0]<<"\n";
     }
     else{
-        cout<<"\nRound Robin is the best algorithm according to the average waiting time\n";
+        cout<<"\nMinimum Average Waiting Time: Round Robin, "<<rr_out[0]<<"\n";
     }
 
     // Print Which algorithm is best according to the average turnaround time
     if(fcfs_out[1] <= sjf_out[1] && fcfs_out[1] <= priority_out[1] && fcfs_out[1] <= rr_out[1]){
-        cout<<"\nFCFS is the best algorithm according to the average turnaround time\n";
+        cout<<"\nMinimum Average Turnaround Time: First Come First Serve, "<<fcfs_out[0]<<"\n";
     }
     else if(sjf_out[1] <= fcfs_out[1] && sjf_out[1] <= priority_out[1] && sjf_out[1] <= rr_out[1]){
-        cout<<"\nSJF is the best algorithm according to the average turnaround time\n";
+        cout<<"\nMinimum Average Turnaround Time: Shortest Job First, "<<sjf_out[1]<<"\n";
     }
     else if(priority_out[1] <= fcfs_out[1] && priority_out[1] <= sjf_out[1] && priority_out[1] <= rr_out[1]){
-        cout<<"\nPriority is the best algorithm according to the average turnaround time\n";
+        cout<<"\nMinimum Average Turnaround Time: Priority Scheduling, "<<priority_out[1]<<"\n";
     }
     else{
-        cout<<"\nRound Robin is the best algorithm according to the average turnaround time\n";
+        cout<<"\nMinimum Average Turnaround Time: Round Robin, "<<rr_out[1]<<"\n";
     }
 
     // Print Which algorithm is best according to the average response time
     if(fcfs_out[2] <= sjf_out[2] && fcfs_out[2] <= priority_out[2] && fcfs_out[2] <= rr_out[2]){
-        cout<<"\nFCFS is the best algorithm according to the average response time\n";
+        cout<<"\nMinimum Average Response Time: First Come First Serve, "<<fcfs_out[2]<<"\n\n";
     }
     else if(sjf_out[2] <= fcfs_out[2] && sjf_out[2] <= priority_out[2] && sjf_out[2] <= rr_out[2]){
-        cout<<"\nSJF is the best algorithm according to the average response time\n";
+        cout<<"\nMinimum Average Response Time: Shortest Job First, "<<sjf_out[2]<<"\n\n";
     }
     else if(priority_out[2] <= fcfs_out[2] && priority_out[2] <= sjf_out[2] && priority_out[2] <= rr_out[2]){
-        cout<<"\nPriority is the best algorithm according to the average response time\n";
+        cout<<"\nMinimum Average Response Time: Priority Scheduling, "<<priority_out[2]<<"\n\n";
     }
     else{
-        cout<<"\nRound Robin is the best algorithm according to the average response time\n";
+        cout<<"\nMinimum Average Response Time: Round Robin, "<<rr_out[2]<<"\n\n";
     }
     return 0;
 }

@@ -52,18 +52,18 @@ void sort(int n, bool at = false){
 using namespace std;
 int main(){
     int n, t;
-    // cout<<"Enter Number of Process: ";
+    cout<<"Enter Number of Process: ";
     cin>>n;
-    // cout<<"Enter Time Quantum: ";
+    cout<<"Enter Time Quantum: ";
     cin>>t;
-    // cout<<"Name: Rachit Shivhare\nEnrollment No.:0827CS221213\n";
+    cout<<"Name: Rachit Shivhare\nEnrollment No.:0827CS221213\n";
     for(int i = 0 ; i<n ; i++){
         arr[i].pno= i+1;
-        // cout<<"Enter the Process ID:";
-        // cin>>arr[i].id;
-        // cout<<"Enter the Arrival Time:";
+        cout<<"Enter the Process ID:";
+        cin>>arr[i].id;
+        cout<<"Enter the Arrival Time:";
         cin>>arr[i].at;
-        // cout<<"Enter the Burst Time:";
+        cout<<"Enter the Burst Time:";
         cin>>arr[i].bt;
         arr[i].bt1 = arr[i].bt;
     }
@@ -109,10 +109,19 @@ int main(){
         }
     }
     sort(n);
+    int tbt=0, twt=0, trt=0;
+    cout<<"\nPath: \n";
+    for(int i=0;i<n;i++){
+        tbt+=arr[i].bt;
+        twt+=arr[i].wt;
+        trt+=arr[i].rt;
+    }
+    int ideal=time-tbt;
     //Output
     cout<<"P No.\tP ID\tAT\tBT\tCT\tTAT\tWT\tST\tRT\n";
     for(int i=0;i<n;i++){
         cout<<arr[i].pno<<"\t"<<arr[i].id<<"\t"<<arr[i].at<<"\t"<<arr[i].bt1<<"\t"<<arr[i].ct<<"\t"<<arr[i].tat<<"\t"<<arr[i].wt<<"\t"<<arr[i].st<<"\t"<<arr[i].rt<<"\n";
     }
+    cout<<"\nTotal Ideal Time = "<<ideal<<"\nAverage Waiting Time =  "<<(float)twt/n<<"\nAverage Turnaround Time = "<<(float)(twt+tbt)/n<<"\nAverage Response Time = "<<(float)trt/n<<"\n";
     return 0;
 }

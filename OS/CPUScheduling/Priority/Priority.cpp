@@ -63,19 +63,19 @@ int check_priority(int n, int time){
 
 int main(){
     int n;
-    cout<<"Enter Number of Process: ";
+    // cout<<"Enter Number of Process: ";
     cin>>n;
-    cout<<"Name: Rachit Shivhare\nEnrollment No.:0827CS221213\n";
+    // cout<<"Name: Rachit Shivhare\nEnrollment No.:0827CS221213\n";
     //Input
     for(int i = 0 ; i<n ; i++){
         arr[i].pno=i;
-        cout<<"Enter the Process ID:";
+        // cout<<"Enter the Process ID:";
         cin>>arr[i].id;
-        cout<<"Enter the Arrival Time:";
+        // cout<<"Enter the Arrival Time:";
         cin>>arr[i].at;
-        cout<<"Enter the Burst Time:";
+        // cout<<"Enter the Burst Time:";
         cin>>arr[i].bt;
-        cout<<"Enter the Priority (highest priority first):";
+        // cout<<"Enter the Priority (highest priority first):";
         cin>>arr[i].pr;
     }
 
