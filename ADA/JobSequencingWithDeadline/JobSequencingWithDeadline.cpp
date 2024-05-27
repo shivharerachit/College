@@ -54,16 +54,17 @@ float MaxProfit(vector<vector<int>>& add, int n, int md){
             profit += add[i][1];
         }
     }
-    cout<<"\nThe sequence of jobs is: ";
+    cout<<"\nThe sequence of jobs is:\n";
     for(int i=1; i<md+1; i++){
         if(seq[i]!=-1){
-            cout<<seq[i]<<" ";
+            cout<<"JOB: j"<<seq[i]<<"\n";
         }
     }
     return profit;
 }
 
 int main(){
+    cout<<"Name: Rachit Shivhare\nEnrollment No.:0827CS221213\n";
     int n;
     cout<<"Enter the number of jobs: ";
     cin>>n;

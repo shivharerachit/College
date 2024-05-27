@@ -45,6 +45,7 @@ float MaxProfit(vector<vector<int>>& add, int n, int W){
 }
 
 int main(){
+    cout<<"Name: Rachit Shivhare\nEnrollment No.:0827CS221213\n";
     int W;
     int n;
     cout<<"Enter the number of objects: ";

@@ -291,8 +291,7 @@ float* rr(int n,  int t){
 
 int main(){
     int n, t;
-    cout<<"Name: Maniya Jeswani\nEnrollment No.:0827CS221157\n";
-    // cout<<"Name: Rachit Shivhare\nEnrollment No.:0827CS221213\n";
+    cout<<"Name: Rachit Shivhare\nEnrollment No.:0827CS221213\n";
     cout<<"Enter Number of Process: ";
     cin>>n;
     cout<<"Enter Time Quantum (for Premtive CPU Scheduling Algorithm ): ";
