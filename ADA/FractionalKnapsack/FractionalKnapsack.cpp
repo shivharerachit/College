@@ -6,11 +6,11 @@ vector<vector<int>> input(int n){
     vector<vector<int>> add;
     for(int i=0; i<n; i++){
         vector<int> temp(3);
-        // cout<<"Enter the object number: ";
+        cout<<"Enter the object number: ";
         cin>>temp[0];
-        // cout<<"Enter the weight: ";
+        cout<<"Enter the weight: ";
         cin>>temp[1];
-        // cout<<"Enter the profit: ";
+        cout<<"Enter the profit: ";
         cin>>temp[2];
         add.push_back(temp);
     }
@@ -47,10 +47,10 @@ float MaxProfit(vector<vector<int>>& add, int n, int W){
 int main(){
     int W;
     int n;
-    // cout<<"Enter the number of objects: ";
+    cout<<"Enter the number of objects: ";
     cin>>n;
     vector<vector<int>> add = input(n);
-    // cout<<"Enter the maximum weight: ";
+    cout<<"Enter the maximum weight: ";
     cin>>W;
     sort(add, n);
     cout<<"The maximum profit is: "<<MaxProfit(add, n, W)<<"\n";
