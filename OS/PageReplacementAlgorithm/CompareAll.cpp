@@ -70,12 +70,24 @@ int lfu(int i){
 }
 // 4. Optimal
 int optimal(int i){
-    int j, k, max = 0;
-    for(j = 0 ; j<nFrames ; j++){
-        for(k = j+1 ; k<nFrames ; k++){
-            if(frame[j] == frame[k] && max < k-j) max = k-j;
-            else 
+    int j, k, max = 0, ret;
+    if(i!=nPages-1){
+        for(j = 0 ; j<nFrames ; j++){
+            bool found = false;
+            for(k = i+1 ; k<nPages ; k++){
+                if(frame[j] == pageRefString[k] && max < k-i){
+                    max = k-i;
+                    found = true;
+                    ret = j;
+                    break;
+                }
+            }
+            if(!found) return j;
         }
+        return ret;
+    }
+    else{
+        return fifo(i);
     }
 }
 
@@ -119,7 +131,7 @@ int* mainLogic(string algorithm){
                 if(algorithm == "FIFO") index = fifo(i);
                 else if(algorithm == "LRU") index = lru(i);
                 else if(algorithm == "LFU") index = lfu(i);
-                // else if(algorithm == "OPTIMAL") optimal();
+                else if(algorithm == "OPTIMAL") index = optimal(i);
                 else cout<<"Wrong Algorithm.";
                 frame[index] = pageRefString[i];
             }
@@ -132,7 +144,21 @@ int* mainLogic(string algorithm){
 }
 
 void output(){
-    int* arr = mainLogic("LFU");
+    int* arr;
+    cout<<"\nFIFO Algorithm:-";
+    arr = mainLogic("FIFO");
+    cout<<"\nNo. of Page Faults: "<<arr[0]<<"\n";
+    cout<<"\nNo. of Page Replacements: "<<arr[1]<<"\n";
+    cout<<"\nLRU Algorithm:-";
+    arr = mainLogic("LRU");
+    cout<<"\nNo. of Page Faults: "<<arr[0]<<"\n";
+    cout<<"\nNo. of Page Replacements: "<<arr[1]<<"\n";
+    cout<<"\nLFU Algorithm:-";
+    arr = mainLogic("LFU");
+    cout<<"\nNo. of Page Faults: "<<arr[0]<<"\n";
+    cout<<"\nNo. of Page Replacements: "<<arr[1]<<"\n";
+    cout<<"\nOPTIMAL Algorithm:-";
+    arr = mainLogic("OPTIMAL");
     cout<<"\nNo. of Page Faults: "<<arr[0]<<"\n";
     cout<<"\nNo. of Page Replacements: "<<arr[1]<<"\n";
 }
