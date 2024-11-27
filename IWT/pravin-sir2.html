@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calender</title>
+    <style>
+        table{
+            height: 50%;
+            width: 50%;
+            position: fixed;
+            top: 25%;
+            left: 25%;
+            align-items: center;
+            border: 1px solid #007FFF;
+        }
+        caption{
+            font-size:xx-large;
+            font-weight: 700;
+            background-color: lightgrey;
+        }
+        td{
+            border: 1px solid #007FFF;
+            align-items: center;
+            text-align: center;
+        }
+        #week{
+            background-color: #007FFF;
+            color: antiquewhite;
+            font-size:larger;
+            font-weight: 700;
+        }
+        #head{
+            font-size:x-large;
+            font-weight: 700;
+            color: antiquewhite;
+            align-items: center;
+            column-span: all;
+            background-color: #007FFF;
+        }
+        #blank{
+            background-color: yellow;
+        }
+        #blue{
+            background-color: #007FFF;
+        }
+        #yellow{
+            background-color: yellow;
+        }
+
+    </style>
+</head>
+<body>
+    <table cellspacing="0px">
+        <caption>December 2024 Calender</caption>
+        <th colspan="7" id="head">December 2024</th>
+        <tr id="week">
+            <td>sun</td>
+            <td>mon</td>
+            <td>tue</td>
+            <td>wed</td>
+            <td>thur</td>
+            <td>fri</td>
+            <td>sat</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>9</td>
+            <td>10</td>
+            <td>11</td>
+            <td>12</td>
+            <td>13</td>
+            <td>14</td>
+        </tr>
+        <tr>
+            <td>15</td>
+            <td>16</td>
+            <td>17</td>
+            <td>18</td>
+            <td>19</td>
+            <td>20</td>
+            <td>21</td>
+        </tr>
+        <tr>
+            <td id="blue">22</td>
+            <td>23</td>
+            <td>24</td>
+            <td id="yellow">25</td>
+            <td>26</td>
+            <td>27</td>
+            <td>28</td>
+        </tr>
+        <tr>
+            <td>29</td>
+            <td>30</td>
+            <td id="yellow">31</td>
+            <td id="blank"></td>
+            <td id="blank"></td>
+            <td id="blank"></td>
+            <td id="blank"></td>
+        </tr>
+    </table>
+</body>
+</html>
